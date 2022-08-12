@@ -3,26 +3,19 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 5000;
 const { readSS } = require("./helpers/sheets");
-
+const sheetClient = require("./api/client");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.get("/", (req, res) => {
-//   res.send("Hi Mom!");
-// });
-
 app.get("/", async (req, res) => {
-  const result = await readSS(
-    "11RP48bv06DwS_Fd3G0TwpO-b3saLEiP_AnaSBRWVmZQ",
-    "Hoja 1!A:B"
-  );
-  console.log(result);
-  res.send(JSON.stringify(result));
+  const test = await readSS();
+  // const test = await sheetClient();
+  console.log(test);
+  res.send("getData");
 });
 
-app.listen(PORT, () => {
-  console.log(`server running @ http://localhost:${PORT}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`server running @ http://localhost:${process.env.PORT || 5000}`);
 });
