@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const credentials = {
   type: "service_account",
-  project_id: "ticketdemo-356915",
+  project_id: "ticket-app-359400",
   private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
   private_key: process.env.GOOGLE_PRIVATE_KEY,
   client_email: process.env.GOOGLE_CLIENT_EMAIL,

@@ -8,7 +8,8 @@
     "googleapis": "^105.0.0"
   },
   "scripts": {
-    "dev": "node api/credentials.js & nodemon index.js"
+    "preDev": "node api/credentials.js",
+    "dev": "nodemon index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
