@@ -1,15 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const moment = require("moment");
-const { addNewLog, updateLogTime, timeFormat } = require("../helpers/sheets");
+const {
+  addNewLog,
+  updateLogTime,
+  timeFormat,
+  readLogs,
+} = require("../helpers/sheets");
 
 router.post("/", async (req, res) => {
+  const ticketData = await readLogs();
+  const ticketId = ticketData.length;
   const {
-    ticket_id: ticketId,
     nif,
     name,
     phone,
     location,
+    olt,
+    puerto_olt,
+    nomenclature,
+    device,
+    mac_address,
+    sn,
+    provider,
     severity_lvl: severityLvl,
     severity_name: severityName,
   } = req.body;
@@ -21,6 +34,15 @@ router.post("/", async (req, res) => {
     location,
     severityLvl,
     severityName,
+    "",
+    "",
+    olt,
+    puerto_olt,
+    nomenclature,
+    device,
+    mac_address,
+    sn,
+    provider,
     moment(new Date()).format(timeFormat),
   ];
   await addNewLog([data]);
@@ -35,8 +57,3 @@ router.put("/", async (req, res) => {
 });
 
 module.exports = router;
-/*
-
-
-
-*/
