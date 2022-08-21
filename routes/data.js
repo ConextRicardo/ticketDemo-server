@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
     Telf_Contacto: result[4],
     Ubicacion: `${result[5]} ${result[6]} ${result[7]}`,
     OLT: result[8],
-    Puerto_OLT: result[8],
+    Puerto_OLT: result[9],
     NOMENCLATURA: result[10],
     EQUIPO: result[11],
     MAC_ONT: result[12],
