@@ -9,7 +9,7 @@ const auth = require("./routes/auth");
 const approvals = require("./routes/approvals");
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/data", data);
 app.use("/logs", logs);

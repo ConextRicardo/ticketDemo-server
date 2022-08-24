@@ -9,13 +9,19 @@ router.get("/", async (req, res) => {
 router.post("/op", async (req, res) => {
   const { approval, ticket_id: ticketID } = req.body;
   await updateOpApproval(ticketID, approval);
-  res.send("op");
+  res.send({
+    code: 200,
+    message: `operations has successfully approved ticket ${ticketID}`,
+  });
 });
 
 router.post("/noc", async (req, res) => {
   const { approval, ticket_id: ticketID } = req.body;
   await updateNocApproval(ticketID, approval);
-  res.send("noc");
+  res.send({
+    code: 200,
+    message: `NOC has successfully approved ticket ${ticketID}`,
+  });
 });
 
 module.exports = router;

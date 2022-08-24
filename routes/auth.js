@@ -20,18 +20,20 @@ const authCheck = (email, password) => {
   const condOp = email === "nelitza.alvarez@conext.com.ve" && check;
   const condSupport = email === "soporte@conext.com.ve" && check;
   return condNoc
-    ? { user: "NOC" }
+    ? { user: "NOC", email, password }
     : condOp
-    ? { user: "OP" }
+    ? { user: "OP", email, password }
     : condSupport
-    ? { user: "ST" }
+    ? { user: "ST", email, password }
     : error;
 };
 
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
   const result = authCheck(email.toLowerCase(), password);
-  res.send(result);
+  result == error
+    ? res.status(error.code).send(error)
+    : res.status(201).send(result);
 });
 
 module.exports = router;

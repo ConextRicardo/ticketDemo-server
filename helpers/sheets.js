@@ -83,7 +83,7 @@ const updateLogTime = async (ticketId) => {
     }
   });
   const dataIndex = data.indexOf(resultedData);
-  const startTime = resultedData[7];
+  const startTime = resultedData[16];
   const endTime = moment(new Date()).format(timeFormat);
   const totalTime = moment(endTime, timeFormat).diff(
     moment(startTime, timeFormat)
@@ -99,7 +99,7 @@ const updateLogTime = async (ticketId) => {
         [
           `${startTime}`,
           `${endTime}`,
-          `${finalTime.hours()}:${finalTime.minutes()}`,
+          `${finalTime.hours()} horas y ${finalTime.minutes()} minutos`,
         ],
       ],
     },
