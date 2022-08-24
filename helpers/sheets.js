@@ -4,20 +4,23 @@ require("dotenv").config();
 
 const VALUES = {
   NRO: 0,
-  Fecha: 1,
+  FECHA: 1,
   NIF: 2,
-  Nombre: 3,
-  Telf_Contacto: 4,
-  UBIC1: 5,
-  UBIC2: 6,
-  UBIC3: 7,
+  NOMBRE: 3,
+  TELF: 4,
+  UBIC: 5,
+  "RES-EDIF-CC": 6,
+  "APTO-LOC-CASA": 7,
   OLT: 8,
-  Puerto_OLT: 9,
-  NOMENCLATURA: 10,
-  EQUIPO: 11,
-  MAC_ONT: 12,
-  SN_ONT: 13,
-  Proveedor: 14,
+  FRAME: 9,
+  SLOT: 10,
+  PORT: 11,
+  ONU_ID: 12,
+  NOMENCLATURA: 13,
+  EQUIPO: 14,
+  MAC: 15,
+  SN: 16,
+  Proveedor: 17,
 };
 const auth = new google.auth.GoogleAuth({
   keyFile: "secrets.json",
@@ -31,7 +34,7 @@ const timeFormat = "DD-MM-YYYY hh:mm:ss A";
 
 const readDB = async (value, index) => {
   const spreadsheetId = process.env.SHEET_DATA_ID;
-  const range = "TICKET!A:O";
+  const range = "TICKET!A:R";
   const sheet = google.sheets({ version: "v4", auth: client });
   const result = await sheet.spreadsheets.values.get({
     auth,
