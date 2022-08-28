@@ -54,7 +54,7 @@ const readLogs = async () => {
     spreadsheetId,
     range,
   });
-  return await result.data.values;
+  return result.data.values;
 };
 const addNewLog = async (values) => {
   const spreadsheetId = process.env.SHEET_LOGS_ID;
@@ -108,7 +108,7 @@ const updateLogTime = async (ticketId) => {
     },
   });
 };
-const updateNocApproval = async (ticketId, approval) => {
+const updateNocApproval = async (ticketId) => {
   const spreadsheetId = process.env.SHEET_LOGS_ID;
   const range = "LOGS!A:S";
   const sheet = google.sheets({ version: "v4", auth: client });
@@ -130,11 +130,11 @@ const updateNocApproval = async (ticketId, approval) => {
     range: `LOGS!I${dataIndex + 1}:I`,
     valueInputOption: "USER_ENTERED",
     resource: {
-      values: [[`${approval}`]],
+      values: [[`si`]],
     },
   });
 };
-const updateOpApproval = async (ticketId, approval) => {
+const updateOpApproval = async (ticketId) => {
   const spreadsheetId = process.env.SHEET_LOGS_ID;
   const range = "LOGS!A:S";
   const sheet = google.sheets({ version: "v4", auth: client });
@@ -156,7 +156,7 @@ const updateOpApproval = async (ticketId, approval) => {
     range: `LOGS!H${dataIndex + 1}:H`,
     valueInputOption: "USER_ENTERED",
     resource: {
-      values: [[`${approval}`]],
+      values: [[`si`]],
     },
   });
 };

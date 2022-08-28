@@ -6,18 +6,18 @@ router.get("/", async (req, res) => {
   res.send("approvals");
 });
 
-router.post("/op", async (req, res) => {
-  const { approval, ticket_id: ticketID } = req.body;
-  await updateOpApproval(ticketID, approval);
+router.put("/op", async (req, res) => {
+  const { ticket_id: ticketID } = req.body;
+  await updateOpApproval(ticketID);
   res.send({
     code: 200,
     message: `operations has successfully approved ticket ${ticketID}`,
   });
 });
 
-router.post("/noc", async (req, res) => {
-  const { approval, ticket_id: ticketID } = req.body;
-  await updateNocApproval(ticketID, approval);
+router.put("/noc", async (req, res) => {
+  const { ticket_id: ticketID } = req.body;
+  await updateNocApproval(ticketID);
   res.send({
     code: 200,
     message: `NOC has successfully approved ticket ${ticketID}`,

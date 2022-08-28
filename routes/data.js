@@ -28,7 +28,47 @@ router.get("/", async (req, res) => {
   const pending = [];
   const history = [];
   all.map((log) => {
-    log.length <= 17 ? pending.push(log) : history.push(log);
+    log.length <= 17
+      ? pending.push({
+          TICKET: log[0],
+          NIF: log[1],
+          NOMBRE: log[2],
+          TELF: log[3],
+          DIRECCION: log[4],
+          NIVEL_SEVERIDAD: log[5],
+          NOMBRE_SEVERIDAD: log[6],
+          OP_APROBACION: log[7],
+          NOC_APROBACION: log[8],
+          OLT: log[9],
+          PUERTO_OLT: log[10],
+          NOMENCLATURA: log[11],
+          EQUIPO: log[12],
+          MAC: log[13],
+          SERIAL: log[14],
+          PROVEEDOR: log[15],
+          INICIO: log[16],
+        })
+      : history.push({
+          TICKET: log[0],
+          NIF: log[1],
+          NOMBRE: log[2],
+          TELF: log[3],
+          DIRECCION: log[4],
+          NIVEL_SEVERIDAD: log[5],
+          NOMBRE_SEVERIDAD: log[6],
+          OP_APROBACION: log[7],
+          NOC_APROBACION: log[8],
+          OLT: log[9],
+          PUERTO_OLT: log[10],
+          NOMENCLATURA: log[11],
+          EQUIPO: log[12],
+          MAC: log[13],
+          SERIAL: log[14],
+          PROVEEDOR: log[15],
+          INICIO: log[16],
+          FIN: log[17],
+          TIEMPO: log[18],
+        });
   });
   res.send({ pendientes: pending, historial: history, totales: all });
 });

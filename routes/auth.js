@@ -20,11 +20,11 @@ const authCheck = (email, password) => {
   const condOp = email === "nelitza.alvarez@conext.com.ve" && check;
   const condSupport = email === "soporte@conext.com.ve" && check;
   return condNoc
-    ? { user: "NOC", email, password }
+    ? { user: "NOC", email, password, type: "NOC" }
     : condOp
-    ? { user: "OP", email, password }
+    ? { user: "Operaciones", email, password, type: "OP" }
     : condSupport
-    ? { user: "ST", email, password }
+    ? { user: "Soporte Tecnico", email, password, type: "ST" }
     : error;
 };
 
